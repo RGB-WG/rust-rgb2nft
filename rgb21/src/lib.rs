@@ -1,5 +1,5 @@
 // RGB-21 Library: non-fungible tokens (collectibles) for bitcoin & lightning
-// Written in 2020 by
+// Written in 2021 by
 //     Dr. Maxim Orlovsky <orlovsky@pandoracore.com>
 //
 // To the extent possible under law, the author(s) have dedicated all
@@ -27,9 +27,18 @@
 extern crate amplify;
 #[macro_use]
 extern crate amplify_derive;
+// #[macro_use]
+extern crate lnpbp;
 #[macro_use]
 extern crate rgb;
 
-pub mod schema;
+#[cfg(feature = "serde")]
+extern crate serde_crate as serde;
+#[cfg(feature = "serde")]
+extern crate serde_with;
 
-pub use schema::SchemaError;
+mod nft;
+pub mod schema;
+mod transitions;
+
+pub use nft::Nft;
